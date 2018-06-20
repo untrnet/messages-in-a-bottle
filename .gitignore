@@ -9,6 +9,9 @@ coverage/
 # production
 build/
 
+# IDE config
+.vscode
+
 # misc
 .DS_Store
 .env.local
