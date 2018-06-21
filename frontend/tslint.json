@@ -1,6 +1,6 @@
 {
-  "rules": {
   "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "rules": {
       "align": [
           true
       ],
@@ -67,7 +67,12 @@
       "no-shadowed-variable": true,
       "no-string-literal": false,
       "no-switch-case-fall-through": true,
-      "no-trailing-whitespace": true,
+      "no-trailing-whitespace": [
+        true,
+        {
+        "severity": "warning"
+        }
+      ],
       "no-unused-expression": true,
       "no-unused-variable": false,
       "no-use-before-declare": true,
