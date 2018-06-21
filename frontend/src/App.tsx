@@ -1,5 +1,5 @@
 import { Container, Title } from "bloomer";
-import * as React from 'react';
+import * as React from "react";
 
 class App extends React.Component {
   public render(): JSX.Element {
