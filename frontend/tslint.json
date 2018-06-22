@@ -27,12 +27,7 @@
           120
       ],
       "member-access": false,
-      "member-ordering": [
-        true,
-        {
-          "order": [ "variables-before-functions" ] 
-        }
-      ],
+      "member-ordering": true,
       "new-parens": true,
       "no-angle-bracket-type-assertion": true,
       "no-any": false,
