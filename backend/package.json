@@ -2,7 +2,7 @@
   "name": "messages-in-a-bottle-api",
   "version": "0.0.1",
   "description": "The API for the 'Messages in a Bottle' experiment.",
-  "main": "dist/server.js",
+  "main": "build/server.js",
   "license": "MIT",
   "private": false,
   "scripts": {
@@ -14,7 +14,7 @@
     "watch-ts": "tsc -w",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "dev": "yarn run watch-ts && nodemon --inspect dist/server.js",
-    "serve": "node dist/server.js"
+    "serve": "node build/server.js"
   },
   "dependencies": {
     "@types/body-parser": "^1.17.0",
