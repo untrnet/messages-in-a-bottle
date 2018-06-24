@@ -1,14 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { isEqual } from "lodash";
-
-/**
- * An authorisation token.
- * @private
- */
-interface Token {
-  fingerprint: string;
-  timestamp: string;
-}
+import { Token } from "../interfaces/token";
 
 /**
  * Previously used tokens, which are now considered invalid.
