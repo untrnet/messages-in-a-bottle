@@ -13,7 +13,7 @@ export class App {
 
   constructor(
     private NODE_ENV = process.env.NODE_ENV || "development",
-    private PORT     = process.env.PORT || "8080",
+    private PORT     = process.env.PORT     || "8080"
   ) {
     this.app = Express();
     this.app.use(bodyparser.json());
