@@ -1,4 +1,5 @@
 import Express, { Router, Request, Response } from "express";
+import { authenticate } from "../middleware/auth";
 
 /**
  * Represents the Messages controller with its associated routes.
@@ -46,6 +47,7 @@ export class MessagesController {
    * on a successful request.
    */
   private messagesCreate(): void {
+    this.router.use(authenticate);
     this.router.post("/", (req: Request, res: Response) => {
       if (req.body.message) {
         this.message = req.body.message;
