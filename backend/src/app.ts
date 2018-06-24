@@ -1,5 +1,8 @@
 import Express from "express";
+import bodyparser from "body-parser";
 import { Server } from "http";
+
+import { MessagesController } from "./controllers/messages";
 
 /**
  * Represents the "Messages in a Bottle" API in its entirety.
@@ -13,8 +16,10 @@ export class App {
     private PORT     = process.env.PORT || "8080",
   ) {
     this.app = Express();
+    this.app.use(bodyparser.json());
 
     this.setEnvironment(this.NODE_ENV);
+    this.setRoutes();
 
     this.server = this.start(this.PORT);
   }
@@ -68,7 +73,7 @@ export class App {
    * Adds the applications routes to the server.
    */
   private setRoutes(): void {
-    // route adding goes here.
+    this.app.use("/messages", MessagesController.create());
   }
 
   /**
