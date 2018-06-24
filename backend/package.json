@@ -1,0 +1,37 @@
+{
+  "name": "messages-in-a-bottle-api",
+  "version": "0.0.1",
+  "description": "The API for the 'Messages in a Bottle' experiment.",
+  "main": "dist/server.js",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "yarn run build && npm run serve",
+    "build": "yarn run build-ts && npm run tslint",
+    "watch-node": "nodemon dist/server.js",
+    "test": "jest --coverage --watch",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "dev": "yarn run watch-ts && nodemon --inspect dist/server.js",
+    "serve": "node dist/server.js"
+  },
+  "dependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/jest": "^23.1.1",
+    "@types/supertest": "^2.0.4",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.2",
+    "yarn": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/node": "^10.3.5",
+    "jest": "^23.1.0",
+    "jest-environment-node": "^23.1.0",
+    "supertest": "^3.1.0",
+    "ts-jest": "^22.4.6",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.1"
+  }
+}
