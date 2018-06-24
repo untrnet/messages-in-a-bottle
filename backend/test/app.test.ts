@@ -81,7 +81,7 @@ describe("App", () => {
         });
 
         it("Returns hello world", () => {
-          expect(res.body).toBe("hello world");
+          expect(res.body.message).toBe("hello world");
         });
       });
 
@@ -100,7 +100,7 @@ describe("App", () => {
 
           it("Updates the current message", async () => {
             res = await request(instance).get("/messages");
-            expect(res.body).toBe("hello I am a test message");
+            expect(res.body.message).toBe("hello I am a test message");
           });
         });
 
@@ -118,7 +118,7 @@ describe("App", () => {
 
           it("Does not update the current message", async () => {
             res = await request(instance).get("/messages");
-            expect(res.body).toBe("hello world");
+            expect(res.body.message).toBe("hello world");
           });
         });
       });

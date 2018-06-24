@@ -35,7 +35,9 @@ export class MessagesController {
    */
   private messagesIndex(): void {
     this.router.get("/", (req: Request, res: Response) => {
-      res.json(this.message);
+      res.json({
+        message: this.message
+      });
     });
   }
 
