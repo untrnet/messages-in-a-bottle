@@ -50,7 +50,7 @@ const hasTokenBeenUsed = (token: Token): boolean => (
  * back to the controller.
  * @private
  */
-const acceptToken = (token: Token, next: NextFunction) => {
+const acceptToken = (token: Token, next: NextFunction): void => {
   usedTokens.push(token);
   next();
 };
@@ -65,7 +65,7 @@ export const authenticate = (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): void => {
   if (req.headers.authorization) {
     const token = createToken(req.headers.authorization);
     hasTokenBeenUsed(token) ? res.sendStatus(401) : acceptToken(token, next);
