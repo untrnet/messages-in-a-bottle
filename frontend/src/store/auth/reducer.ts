@@ -22,6 +22,12 @@ export const authReducer = (state: AuthState = initialState, action: AuthAction)
     case Types.CREATE_TOKEN_FAIL:
       return addToken(toggleLoading(state), action.payload);
 
+    case Types.AUTHENTICATE:
+      return { ...state, isAuthenticated: true };
+
+    case Types.UNAUTHENTICATE:
+      return { ...state, isAuthenticated: false };
+
     default:
       return state;
   }

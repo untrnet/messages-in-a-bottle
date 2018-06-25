@@ -3,6 +3,9 @@ import { authReducer as reducer } from "./reducer";
 import { AuthState } from "./state";
 
 describe("Reducer: Auth", () => {
+  const TOKEN = "12345abcd+000000";
+  const PREVIOUS_TOKEN = "23456bcde+123456";
+
   const INITIAL_STATE: AuthState = {
     isLoading: false,
     isAuthenticated: false,
@@ -13,8 +16,11 @@ describe("Reducer: Auth", () => {
     isAuthenticated: false,
     token: ""
   };
-  const TOKEN = "12345abcd+000000";
-  const PREVIOUS_TOKEN = "23456bcde+123456";
+  const AUTH_STATE: AuthState = {
+    isLoading: false,
+    isAuthenticated: true,
+    token: TOKEN
+  };
 
   let result: AuthState;
 
@@ -50,6 +56,20 @@ describe("Reducer: Auth", () => {
 
     it("Adds the previously used token to the state", () => {
       expect(result.token).toBe(PREVIOUS_TOKEN);
+    });
+  });
+
+  describe("AUTHENTICATE", () => {
+    it("Sets the isAuthenticated flag to true", () => {
+      result = reducer(INITIAL_STATE, actions.Authenticate());
+      expect(result.isAuthenticated).toBeTruthy();
+    });
+  });
+
+  fdescribe("UNAUTHENTICATE", () => {
+    it("Sets the isAuthenticated flag to false", () => {
+      result = reducer(AUTH_STATE, actions.Unauthenticate());
+      expect(result.isAuthenticated).toBeFalsy();
     });
   });
 
