@@ -2,11 +2,11 @@ import { Container, Title } from "bloomer";
 import * as React from "react";
 
 import { store } from "./store";
-import { actions as authActions } from "./store/auth/actions";
+import { Actions as authActions } from "./store/auth/actions";
 
 class App extends React.Component {
   public componentDidMount() {
-    store.dispatch(authActions.create());
+    store.dispatch(authActions.Create());
   }
 
   public render(): JSX.Element {
