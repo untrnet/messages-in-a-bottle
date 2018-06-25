@@ -1,7 +1,7 @@
 export class AuthStorage {
-  private static TOKEN_KEY = "Authorization";
+  private TOKEN_KEY = "Authorization";
 
-  public static fetchToken(): string {
+  public fetchToken(): string {
     const token = localStorage.getItem(this.TOKEN_KEY);
     if (!!token) {
       return token;
@@ -10,7 +10,7 @@ export class AuthStorage {
     }
   }
 
-  public static addToken(token: string): void {
+  public addToken(token: string): void {
     if (!localStorage.getItem(this.TOKEN_KEY)) {
       localStorage.setItem(this.TOKEN_KEY, token);
     }

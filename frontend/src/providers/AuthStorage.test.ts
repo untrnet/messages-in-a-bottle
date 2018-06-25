@@ -6,6 +6,12 @@ describe("Provider: LocalStorage", () => {
   const TOKEN         = `5eea52c8c1c6f4f65afdf4c707f88915+1529936357318`;
   const TOKEN_2       = `6eea52c8c1c6f4f65afdf4c707f88915+1529936357666`;
 
+  let provider: AuthStorage;
+
+  beforeEach(() => {
+    provider = new AuthStorage();
+  });
+
   afterEach(() => {
     localStorage.clear();
   });
@@ -13,21 +19,21 @@ describe("Provider: LocalStorage", () => {
   describe("#fetchToken", () => {
     describe("Without a previously used auth token", () => {
       it("Throws an error", () => {
-        expect(() => AuthStorage.fetchToken()).toThrowError(ERROR_MESSAGE);
+        expect(() => provider.fetchToken()).toThrowError(ERROR_MESSAGE);
       });
     });
 
     describe("With a previously used auth token", () => {
       it("Returns the saved token", () => {
         localStorage.setItem(KEY, TOKEN);
-        expect(AuthStorage.fetchToken()).toBe(TOKEN);
+        expect(provider.fetchToken()).toBe(TOKEN);
       });
     });
   });
 
   describe("#addToken", () => {
     beforeEach(() => {
-      AuthStorage.addToken(TOKEN);
+      provider.addToken(TOKEN);
     });
 
     it("Saves a newly generated token to localStorage with the correct key", () => {
@@ -35,7 +41,7 @@ describe("Provider: LocalStorage", () => {
     });
 
     it("Does not overwrite any existing tokens", () => {
-      AuthStorage.addToken(TOKEN_2);
+      provider.addToken(TOKEN_2);
       expect(localStorage.getItem(KEY)).not.toBe(TOKEN_2);
     });
   });

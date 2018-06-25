@@ -18,14 +18,16 @@ class MockFingerprint {
 
 describe("Provider: Token", () => {
   let result: string;
+  let token: Token;
 
   beforeEach(() => {
     stubTime();
+    token = new Token();
   });
 
   describe("#generate", () => {
     it("Creates a authentication token", async () => {
-      result = await Token.generate(MockFingerprint);
+      result = await token.generate(MockFingerprint);
       expect(result).toBe(TOKEN);
     });
   });
