@@ -1,4 +1,4 @@
-import { actions } from "./actions";
+import { Actions } from "./actions";
 import { authReducer as reducer } from "./reducer";
 import { AuthState } from "./state";
 
@@ -26,14 +26,14 @@ describe("Reducer: Auth", () => {
 
   describe("CREATE_TOKEN", () => {
     it("Sets the loading flag to true", () => {
-      result = reducer(INITIAL_STATE, actions.create());
+      result = reducer(INITIAL_STATE, Actions.Create());
       expect(result.isLoading).toBeTruthy();
     });
   });
 
   describe("CREATE_TOKEN_SUCCESS", () => {
     beforeEach(() => {
-      result = reducer(LOADING_STATE, actions.createSuccess(TOKEN));
+      result = reducer(LOADING_STATE, Actions.CreateSuccess(TOKEN));
     });
 
     it("Sets the loading flag to false", () => {
@@ -47,7 +47,7 @@ describe("Reducer: Auth", () => {
 
   describe("CREATE_TOKEN_FAIL", () => {
     beforeEach(() => {
-      result = reducer(LOADING_STATE, actions.CreateFail(PREVIOUS_TOKEN));
+      result = reducer(LOADING_STATE, Actions.CreateFail(PREVIOUS_TOKEN));
     });
 
     it("Sets the loading flag to false", () => {
@@ -61,14 +61,14 @@ describe("Reducer: Auth", () => {
 
   describe("AUTHENTICATE", () => {
     it("Sets the isAuthenticated flag to true", () => {
-      result = reducer(INITIAL_STATE, actions.Authenticate());
+      result = reducer(INITIAL_STATE, Actions.Authenticate());
       expect(result.isAuthenticated).toBeTruthy();
     });
   });
 
   describe("UNAUTHENTICATE", () => {
     it("Sets the isAuthenticated flag to false", () => {
-      result = reducer(AUTH_STATE, actions.Unauthenticate());
+      result = reducer(AUTH_STATE, Actions.Unauthenticate());
       expect(result.isAuthenticated).toBeFalsy();
     });
   });

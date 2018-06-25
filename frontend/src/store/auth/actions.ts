@@ -52,9 +52,9 @@ const unauthenticate = (): Unauthenticate => ({
   type: Types.UNAUTHENTICATE
 });
 
-export const actions = {
-  create: createToken,
-  createSuccess: createTokenSuccess,
+export const Actions = {
+  Create: createToken,
+  CreateSuccess: createTokenSuccess,
   CreateFail: createTokenFail,
   Authenticate: authenticate,
   Unauthenticate: unauthenticate

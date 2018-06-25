@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { actions, Types } from "./actions";
+import { Actions, Types } from "./actions";
 
 import { AuthStorage } from "../../providers/AuthStorage";
 import { Token } from "../../providers/Token";
@@ -21,10 +21,10 @@ const fetchToken = async (provider = new AuthStorage()) => {
 function * initializeToken() {
   try {
     const existingToken = yield call(fetchToken);
-    return yield put(actions.CreateFail(existingToken));
+    return yield put(Actions.CreateFail(existingToken));
   } catch (error) {
     const newToken = yield call(createToken);
-    return yield put(actions.createSuccess(newToken));
+    return yield put(Actions.CreateSuccess(newToken));
   }
 }
 
