@@ -66,7 +66,7 @@ describe("Reducer: Auth", () => {
     });
   });
 
-  fdescribe("UNAUTHENTICATE", () => {
+  describe("UNAUTHENTICATE", () => {
     it("Sets the isAuthenticated flag to false", () => {
       result = reducer(AUTH_STATE, actions.Unauthenticate());
       expect(result.isAuthenticated).toBeFalsy();
