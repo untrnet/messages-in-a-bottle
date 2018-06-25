@@ -5,6 +5,7 @@
   "dependencies": {
     "bloomer": "^0.6.3",
     "bulma": "^0.7.1",
+    "fingerprintjs2": "^1.8.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@types/enzyme-adapter-react-16": "^1.0.2",
+    "@types/fingerprintjs2": "^1.5.2",
     "@types/jest": "^23.1.1",
     "@types/node": "^10.3.4",
     "@types/react": "^16.4.1",
@@ -27,6 +29,7 @@
     "@types/react-redux": "5.0.19",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "jest-localstorage-mock": "^2.2.0",
     "redux-saga-test-plan": "3.6.0",
     "typescript": "^2.9.2"
   }

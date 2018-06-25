@@ -1,8 +1,8 @@
 import { Container, Title } from "bloomer";
+import * as React from "react";
+
 import { store } from "./store";
 import { actions as authActions } from "./store/auth/actions";
-
-import * as React from "react";
 
 class App extends React.Component {
   public componentDidMount() {
