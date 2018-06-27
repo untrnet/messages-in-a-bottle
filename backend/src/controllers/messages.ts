@@ -1,5 +1,6 @@
 import Express, { Router, Request, Response } from "express";
 import { authenticate } from "../middleware/auth";
+import cors from "cors";
 
 /**
  * Represents the Messages controller with its associated routes.
@@ -11,6 +12,8 @@ export class MessagesController {
     private router: Router = Express.Router()
   ) {
     this.message = "hello world";
+
+    this.enableCors();
     this.initialiseRoutes();
   }
 
@@ -28,6 +31,13 @@ export class MessagesController {
   private initialiseRoutes(): void {
     this.messagesIndex();
     this.messagesCreate();
+  }
+
+  /**
+   * Enables cross-origin resource sharing (CORS) for the messages routes.
+   */
+  private enableCors(): void {
+    this.router.use(cors());
   }
 
   /**
