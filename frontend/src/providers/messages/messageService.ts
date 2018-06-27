@@ -18,7 +18,7 @@ export class MessagesService {
   }
 
   public getCurrentMessage(): Promise<MessageResponse> {
-    return this.http.get(this.url)
+    return this.http.get(this.url, { headers: "" })
       .then(res => res.data);
   }
 
