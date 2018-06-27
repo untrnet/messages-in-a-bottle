@@ -1,13 +1,15 @@
-// import { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
 
-// TODO: get env URL + endpoint + auth header from store here.
+import { store } from "../../store";
+import { getConfig } from "../../store/config/selectors";
 
-// export const createConfigObject = (): AxiosRequestConfig => (
-//   {
-//       baseURL: config.environment,
-//       url: config.endpoint,
-//       headers: {
-//           "Authorization": config.authKey
-//       }
-//   }
-// );
+export const createConfigObject = (token: string): AxiosRequestConfig => {
+  const config = getConfig(store.getState());
+  return {
+    baseURL: `${config.url}:${config.port}`,
+    url: `${config.messagesEndpoint}`,
+    headers: {
+      "Authorization": token
+    }
+  };
+};

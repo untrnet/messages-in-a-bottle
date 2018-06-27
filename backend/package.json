@@ -7,12 +7,11 @@
   "private": false,
   "scripts": {
     "start": "yarn run build && yarn run serve",
-    "build": "yarn run tslint && yarn run build-ts",
+    "build": "yarn run lint && yarn run build-ts",
     "test": "jest --coverage --watch",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "dev": "yarn run watch-ts && nodemon --inspect dist/server.js",
     "serve": "node build/server.js"
   },
   "dependencies": {
