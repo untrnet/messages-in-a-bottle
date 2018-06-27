@@ -43,7 +43,9 @@ describe("Saga: Auth", () => {
           .throw(new Error())
           .call(createToken)
           .next()
-          .put({ type: Types.CREATE_TOKEN_SUCCESS, payload: undefined });
+          .put({ type: Types.CREATE_TOKEN_SUCCESS, payload: undefined })
+          .next()
+          .put({ type: Types.AUTHENTICATE });
       });
     });
   });

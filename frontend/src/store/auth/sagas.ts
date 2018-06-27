@@ -24,7 +24,8 @@ function * initializeToken() {
     return yield put(Actions.CreateFail(existingToken));
   } catch (error) {
     const newToken = yield call(createToken);
-    return yield put(Actions.CreateSuccess(newToken));
+    yield put(Actions.CreateSuccess(newToken));
+    return yield put(Actions.Authenticate());
   }
 }
 
