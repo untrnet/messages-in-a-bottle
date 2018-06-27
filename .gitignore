@@ -8,6 +8,7 @@ coverage/
 
 # production
 build/
+frontend/src/config/prod.conf.json
 
 # IDE config
 .vscode
