@@ -8,7 +8,6 @@ import { store } from "../../store";
 import { getToken } from "../../store/auth/selectors";
 import { Actions, Types } from "./actions";
 
-// const createConfig = (token: string) => createConfigObject(token);
 const createConfig = () => {
   const token = getToken(store.getState());
   return createConfigObject(token as string);
@@ -22,16 +21,43 @@ const getMessagesFromApi = async (
   return message;
 };
 
+const postMessageToApi = async (
+  message: string,
+  config: AxiosRequestConfig,
+  service: MessagesService = new MessagesService(config)
+) => {
+  await service.postNewMessage(message);
+};
+
 function * getMessages() {
   const reqConfig = yield call(createConfig);
-  const res: MessageResponse = yield getMessagesFromApi(reqConfig);
-  yield put(Actions.LoadSuccess(res.message));
+  try {
+    const res: MessageResponse = yield call(getMessagesFromApi, reqConfig);
+    yield put(Actions.LoadSuccess(res.message));
+  } catch {
+    yield put(Actions.LoadFail());
+  }
+}
+
+function * postMessage(action: any) {
+  const reqConfig = yield call(createConfig);
+  try {
+    yield call(postMessageToApi, action.payload, reqConfig);
+    yield put(Actions.SubmitSuccess(action.payload));
+  } catch {
+    yield put(Actions.SubmitFail());
+  }
 }
 
 function * messagesSaga() {
   yield takeLatest(Types.LOAD, getMessages);
+  yield takeLatest(Types.SUBMIT, postMessage);
 }
 
 export {
-  messagesSaga
+  createConfig,
+  getMessages,
+  getMessagesFromApi,
+  messagesSaga,
+  postMessage
 };

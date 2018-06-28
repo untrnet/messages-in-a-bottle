@@ -6,7 +6,6 @@ import { getConfig } from "./providers/Config";
 import { store } from "./store";
 import { Actions as AuthActions } from "./store/auth/actions";
 import { Actions as ConfigActions } from "./store/config/actions";
-import { Actions as MessagesActions } from "./store/messages/actions";
 
 class App extends React.Component {
   public componentDidMount() {
@@ -14,8 +13,6 @@ class App extends React.Component {
       ConfigActions.Load(getConfig())
     );
     store.dispatch(AuthActions.Create());
-
-    setTimeout(() => store.dispatch(MessagesActions.Load()), 2000);
   }
 
   public render(): JSX.Element {
