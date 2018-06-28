@@ -1,13 +1,14 @@
-import { Container } from "bloomer";
+import { Column, Columns, Container } from "bloomer";
 import * as React from "react";
-
-import { getConfig } from "./providers/Config";
 
 import { store } from "./store";
 import { Actions as AuthActions } from "./store/auth/actions";
 import { Actions as ConfigActions } from "./store/config/actions";
 
+import { getConfig } from "./providers/Config";
+
 import CurrentMessage from "./containers/CurrentMessage";
+import Welcome from "./containers/Welcome";
 
 class App extends React.Component {
   public componentDidMount() {
@@ -20,8 +21,13 @@ class App extends React.Component {
   public render(): JSX.Element {
     return (
       <div className="App">
+        <Welcome />
         <Container>
-          <CurrentMessage />
+          <Columns isCentered={true} isMarginless={true}>
+            <Column>
+              <CurrentMessage />
+            </Column>
+          </Columns>
         </Container>
       </div>
     );
