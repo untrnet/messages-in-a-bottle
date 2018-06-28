@@ -3,6 +3,7 @@ import * as React from "react";
 
 export interface MessageProps {
   currentMessage?: string;
+  errorText: string;
 }
 
 export const Message = (props: MessageProps): JSX.Element => (

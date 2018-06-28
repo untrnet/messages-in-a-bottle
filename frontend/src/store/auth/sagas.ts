@@ -1,8 +1,9 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { Actions, Types } from "./actions";
 
 import { AuthStorage } from "../../providers/AuthStorage";
 import { Token } from "../../providers/Token";
+import { Actions as MessageActions } from "../messages/actions";
+import { Actions, Types } from "./actions";
 
 const createToken = async (
   provider = new Token(),
@@ -18,7 +19,7 @@ const fetchToken = async (provider = new AuthStorage()) => {
   return token;
 };
 
-function * initializeToken() {
+function* initializeToken() {
   try {
     const existingToken = yield call(fetchToken);
     return yield put(Actions.CreateFail(existingToken));
@@ -26,10 +27,12 @@ function * initializeToken() {
     const newToken = yield call(createToken);
     yield put(Actions.CreateSuccess(newToken));
     return yield put(Actions.Authenticate());
+  } finally {
+    yield put(MessageActions.Load());
   }
 }
 
-function * authSaga() {
+function* authSaga() {
   yield takeLatest(Types.CREATE_TOKEN, initializeToken);
 }
 
