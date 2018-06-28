@@ -1,9 +1,11 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 
+import { Actions as MessageActions } from "../messages/actions";
+import { Actions as ModalActions } from "../ui/actions";
+import { Actions, Types } from "./actions";
+
 import { AuthStorage } from "../../providers/AuthStorage";
 import { Token } from "../../providers/Token";
-import { Actions as MessageActions } from "../messages/actions";
-import { Actions, Types } from "./actions";
 
 const createToken = async (
   provider = new Token(),
@@ -28,6 +30,7 @@ function* initializeToken() {
     yield put(Actions.CreateSuccess(newToken));
     return yield put(Actions.Authenticate());
   } finally {
+    yield put(ModalActions.Show());
     yield put(MessageActions.Load());
   }
 }

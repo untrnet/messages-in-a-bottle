@@ -1,4 +1,5 @@
 import {
+  Button,
   Content,
   Modal as BulmaModal,
   ModalBackground,
@@ -14,31 +15,27 @@ export interface ModalProps {
   title: string;
   description: string;
   instructions: string;
-  footer: string;
+  button: string;
   isVisible?: boolean;
   handleClose?(): void;
 }
 
-export const Modal = (props: ModalProps): JSX.Element => {
-  console.log(props);
-  return (
-    <BulmaModal isActive={props.isVisible}>
-      <ModalBackground />
-      <ModalCard>
-        <ModalCardHeader>
-          <ModalCardTitle>{props.title}</ModalCardTitle>
-        </ModalCardHeader>
-        <ModalCardBody>
-          <Content>
-            <p>{props.description}</p>
-            <p>{props.instructions}</p>
-          </Content>
-        </ModalCardBody>
-        <ModalCardFooter>
-          {props.footer}
-          <button onClick={props.handleClose}>ye</button>
-        </ModalCardFooter>
-      </ModalCard>
-    </BulmaModal>
-  );
-};
+export const Modal = (props: ModalProps): JSX.Element => (
+  <BulmaModal isActive={props.isVisible}>
+    <ModalBackground />
+    <ModalCard>
+      <ModalCardHeader>
+        <ModalCardTitle>{props.title}</ModalCardTitle>
+      </ModalCardHeader>
+      <ModalCardBody>
+        <Content>
+          <p>{props.description}</p>
+          <p>{props.instructions}</p>
+        </Content>
+      </ModalCardBody>
+      <ModalCardFooter>
+        <Button onClick={props.handleClose} isFullWidth={true} isColor="primary">{props.button}</Button>
+      </ModalCardFooter>
+    </ModalCard>
+  </BulmaModal>
+);

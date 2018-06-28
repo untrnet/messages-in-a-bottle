@@ -2,8 +2,8 @@
   "modal": {
     "title": "Messages in a Bottle",
     "description": "When you connect, you will see a message left for you by the previous participant.",
-    "instructions": "You will be able to leave ONE message, which will be viewed by the next participant",
-    "footer": "An UNTRNET experiment."
+    "instructions": "You will be able to leave ONE message, which will be viewed by the next participant.",
+    "button": "Cool"
   },
   "errorMessages": {
     "noCurrentMessage": "Nobody has left a message yet. Be the first."
