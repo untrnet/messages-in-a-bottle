@@ -13,6 +13,7 @@ export const Message = (props: MessageProps): JSX.Element => (
       <Title
         isSize={2}
         hasTextAlign="centered"
+        data-test-id="current-message"
       >
         {props.currentMessage}
       </Title>
@@ -22,7 +23,7 @@ export const Message = (props: MessageProps): JSX.Element => (
         hasTextAlign="centered"
         hasTextColor="info"
       >
-        {props.currentMessage}
+        {props.errorText}
       </Title>
     }
   </Box>
