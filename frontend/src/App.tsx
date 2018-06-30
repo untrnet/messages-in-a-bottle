@@ -8,6 +8,7 @@ import { Actions as ConfigActions } from "./store/config/actions";
 import { getConfig } from "./providers/Config";
 
 import CurrentMessage from "./containers/CurrentMessage";
+import SubmitMessage from "./containers/SubmitMessage";
 import Welcome from "./containers/Welcome";
 
 class App extends React.Component {
@@ -26,6 +27,7 @@ class App extends React.Component {
           <Columns isCentered={true} isMarginless={true}>
             <Column>
               <CurrentMessage />
+              <SubmitMessage />
             </Column>
           </Columns>
         </Container>

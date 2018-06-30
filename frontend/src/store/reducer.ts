@@ -1,13 +1,15 @@
 import { combineReducers } from "redux";
+import { reducer as formReducer } from "redux-form";
 
-import { authReducer as auth } from "./auth/reducer";
-import { configReducer as config } from "./config/reducer";
-import { messagesReducer as messages } from "./messages/reducer";
-import { uiReducer as ui } from "./ui/reducer";
+import { authReducer } from "./auth/reducer";
+import { configReducer } from "./config/reducer";
+import { messagesReducer } from "./messages/reducer";
+import { uiReducer } from "./ui/reducer";
 
 export default combineReducers({
-  auth,
-  config,
-  messages,
-  ui
+  auth: authReducer,
+  config: configReducer,
+  messages: messagesReducer,
+  ui: uiReducer,
+  form: formReducer
 });
