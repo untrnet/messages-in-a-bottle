@@ -20,6 +20,10 @@ export interface ModalProps {
   handleClose?(): void;
 }
 
+/**
+ * A modal which displays instructions on how to use the app.
+ * @param props The props handed into the component.
+ */
 export const Modal = (props: ModalProps): JSX.Element => (
   <BulmaModal isActive={props.isVisible}>
     <ModalBackground />

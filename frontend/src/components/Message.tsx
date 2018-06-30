@@ -6,6 +6,10 @@ export interface MessageProps {
   errorText: string;
 }
 
+/**
+ * A component which shows the most recent message saved on the backend.
+ * @param {MessageProps} props The props handed into the component.
+ */
 export const Message = (props: MessageProps): JSX.Element => (
   <Box>
     {(props.currentMessage)

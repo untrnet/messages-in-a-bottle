@@ -1,6 +1,10 @@
 import * as React from "react";
 import { Field } from "redux-form";
 
+/**
+ * A form for submitting a new message.
+ * @param props The props handed into the component.
+ */
 export const MessageForm = (props: any) => (
   <div>
     <form onSubmit={props.handleSubmit}>

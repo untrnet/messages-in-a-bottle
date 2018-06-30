@@ -11,8 +11,20 @@ import CurrentMessage from "./containers/CurrentMessage";
 import SubmitMessage from "./containers/SubmitMessage";
 import Welcome from "./containers/Welcome";
 
+/**
+ * The root application component.
+ */
 class App extends React.Component {
   public componentDidMount() {
+    this.dispatchInitialiastionActions();
+  }
+
+  /**
+   * Dispatches the actions to the store necessary for the app
+   * to bootstrap successfully.
+   * @private
+   */
+  private dispatchInitialiastionActions(): void {
     store.dispatch(
       ConfigActions.Load(getConfig())
     );
