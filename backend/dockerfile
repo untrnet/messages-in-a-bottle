@@ -1,0 +1,14 @@
+FROM node:8.6.0
+
+ENV NPM_CONFIG_LOGLEVEL warn
+
+EXPOSE 9002
+
+COPY package.json package.json
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+CMD [ "npm", "start" ]
