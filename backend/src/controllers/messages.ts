@@ -1,6 +1,8 @@
 import Express, { Router, Request, Response } from "express";
-import { authenticate } from "../middleware/auth";
 import cors from "cors";
+
+import { authenticate } from "../middleware/auth";
+import { sanitise } from "../middleware/sanitsation";
 
 /**
  * Represents the Messages controller with its associated routes.
@@ -58,6 +60,7 @@ export class MessagesController {
    */
   private messagesCreate(): void {
     this.router.use(authenticate);
+    this.router.use(sanitise);
     this.router.post("/", (req: Request, res: Response) => {
       if (req.body.message) {
         this.message = req.body.message;

@@ -10,7 +10,9 @@ describe("Routes", () => {
     default: "hello world",
     valid: "valid test message",
     invalid: "very wrong test message",
-    valid2: "another valid test message"
+    valid2: "another valid test message",
+    invalid_email: "hello@test.com",
+    invalid_phone_number: "call me at 0800 123 1234 bbz xx ;)"
   };
 
   let instance: Server;
@@ -108,6 +110,18 @@ describe("Routes", () => {
         it("Does not update the current message", async () => {
           res = await helpers.GET("/messages", instance);
           expect(res.body.message).toBe(MESSAGES.valid);
+        });
+      });
+
+      describe("Posting personal information", () => {
+        it("Returns a 422 when trying to post an email address within a message", async () => {
+          res = await helpers.validPOST(MESSAGES.invalid_email, instance);
+          expect(res.status).toBe(422);
+        });
+
+        it("Returns a 422 when trying to post a phone number within a message", async () => {
+          res = await helpers.validPOST(MESSAGES.invalid_phone_number, instance);
+          expect(res.status).toBe(422);
         });
       });
     });
