@@ -3,6 +3,7 @@ import cors from "cors";
 
 import { authenticate } from "../middleware/auth";
 import { sanitise } from "../middleware/sanitsation";
+import { verifyLength } from "../middleware/length";
 
 /**
  * Represents the Messages controller with its associated routes.
@@ -43,6 +44,15 @@ export class MessagesController {
   }
 
   /**
+   * Applies middleware to a request to validate it.
+   */
+  private validateRequest(): void {
+    this.router.use(authenticate);
+    this.router.use(sanitise);
+    this.router.use(verifyLength);
+  }
+
+  /**
    * The GET route for the messages controller. Sends the most recently
    * posted message as a response.
    */
@@ -59,8 +69,8 @@ export class MessagesController {
    * on a successful request.
    */
   private messagesCreate(): void {
-    this.router.use(authenticate);
-    this.router.use(sanitise);
+    this.validateRequest();
+
     this.router.post("/", (req: Request, res: Response) => {
       if (req.body.message) {
         this.message = req.body.message;
