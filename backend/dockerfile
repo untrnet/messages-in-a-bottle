@@ -1,5 +1,5 @@
 # FROM node:8.6.0
-FROM resin/resin/raspberry-pi-node:latest
+FROM resin/raspberry-pi-node:latest
 
 ENV NPM_CONFIG_LOGLEVEL warn
 
